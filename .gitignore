@@ -1,0 +1,15 @@
+# Local / private stuff
+.idea/
+
+# Temporary files & folders
+bin/
+var/
+vendor/
+*.log
+*.heartbeat
+migrations/config/visitares_*.php
+
+# Generic files
+*~
+*.DS_Store
+Thumbs.db

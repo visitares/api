@@ -1,0 +1,1 @@
+for file in ./migrations/config/visitares_*.php; do 	bin/phinx migrate -c $file; done;

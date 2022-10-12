@@ -1,0 +1,21 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Attachment' table='attachment'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<!-- Relations -->
+		<many-to-one field='message' target-entity='Visitares\Entity\Message' inversed-by='attachments' />
+		<many-to-one field='form' target-entity='Visitares\Entity\Form' inversed-by='documents' />
+
+		<!-- Data -->
+		<field name='name' type='string' length='250' nullable='false' />
+		<field name='mimetype' type='string' length='100' nullable='false' />
+		<field name='size' type='integer' nullable='false' />
+		<field name='data' type='text' nullable='false' />
+		<field name='sort' type='integer' nullable='true' />
+	</entity>
+</doctrine-mapping>

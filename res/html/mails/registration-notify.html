@@ -1,0 +1,30 @@
+<div style='font-family:arial;'>
+	<p>Für die Instanz <b>{{ instance.name }}</b> (<i>{{ instance.domain }}</i>) hat sich ein neuer Benutzer registriert:</p>
+	<br>
+	<table style='font-family:arial;'>
+		<tr>
+			<td style='padding-right:5px;'><b>Name:</b></td>
+			<td>{{ user.fullname }}</td>
+		</tr>
+		<tr>
+			<td style='padding-right:5px;'><b>Abteilung:</b></td>
+			<td>{{ user.department }}</td>
+		</tr>
+		<tr>
+			<td style='padding-right:5px;'><b>Unternehmen:</b></td>
+			<td>{{ user.company }}</td>
+		</tr>
+		<tr>
+			<td style='padding-right:5px;'><b>Benutzer:</b></td>
+			<td>{{ user.username }}</td>
+		</tr>
+		<tr>
+			<td style='padding-right:5px;'><b>E-Mail:</b></td>
+			<td>{{ user.email }}</td>
+		</tr>
+	</table>
+	<br>
+	<p>
+		<i>Datum: {{ "now" | date("d.m.Y H:i") }}</i>
+	</p>
+</div>

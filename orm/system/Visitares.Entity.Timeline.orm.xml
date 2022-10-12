@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Timeline' table='timeline'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<!-- Data -->
+		<field name='isActive' type='boolean' />
+		<field name='name' type='string' length='250' />
+		<field name='shortDescription' type='text' />
+	</entity>
+</doctrine-mapping>

@@ -1,0 +1,20 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Value' table='value'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<!-- Relations -->
+		<many-to-one field='submit' target-entity='Visitares\Entity\Submit' inversed-by='values' />
+		<many-to-one field='input' target-entity='Visitares\Entity\Input' />
+		<many-to-one field='option' target-entity='Visitares\Entity\Option' nullable='true' />
+
+		<!-- Data -->
+		<field name='checked' type='boolean' />
+		<field name='text' type='string' nullable='true' />
+		<field name='coefficient' type='decimal' precision='9' scale='2' nullable='true' />
+	</entity>
+</doctrine-mapping>

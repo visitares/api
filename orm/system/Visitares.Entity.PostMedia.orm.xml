@@ -1,0 +1,23 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\PostMedia' table='media'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<!-- Relations -->
+		<many-to-one field='post' target-entity='Visitares\Entity\Post' nullable='false' />
+
+		<!-- Data -->
+		<field name='label' type='string' />
+		<field name='description' type='string' />
+		<field name='type' type='integer' nullable='false' />
+		<field name='mime' type='string' />
+		<field name='filename' type='string' />
+		<field name='originalFilename' type='string' />
+		<field name='ext' type='string' />
+		<field name='filesize' type='integer' />
+	</entity>
+</doctrine-mapping>

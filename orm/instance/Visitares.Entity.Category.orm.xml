@@ -1,0 +1,49 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Category' table='category'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<!-- Relations -->
+		<many-to-one field='client' target-entity='Visitares\Entity\Client' inversed-by='categories'>
+			 <cascade>
+				<cascade-persist />
+			</cascade>
+		</many-to-one>
+		<many-to-many field='groups' target-entity='Visitares\Entity\Group' inversed-by='categories'>
+			 <cascade>
+				<cascade-persist />
+			</cascade>
+		</many-to-many>
+
+		<!-- Data -->
+		<field name='isActive' type='boolean' />
+		<field name='isCopy' type='boolean' />
+		<field name='sort' type='integer' nullable='true' />
+		<field name='icon' type='string' length='250' />
+		<field name='iconId' column='icon_id' type='integer' nullable='true' />
+		<field name='beginDate' type='date' nullable='true' />
+		<field name='endDate' type='date' nullable='true' />
+		<field name='inputLockHours' type='integer' />
+		<field name='lineBreak' type='boolean' />
+		<field name='dividingLine' type='boolean' />
+		<field name='maxScore' type='decimal' precision='9' scale='2' nullable='true' />
+		<field name='processesEnabled' type='boolean' />
+		<field name='enableProcessDefinitions' type='boolean' nullable='false' />
+
+		<!-- Translated Fields -->
+		<one-to-one field='nameTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+		<one-to-one field='descriptionTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+	</entity>
+</doctrine-mapping>

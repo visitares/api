@@ -1,0 +1,66 @@
+<div>
+	
+	<h2 style='margin-bottom:7px'>{{ export.process.name }}</h2>
+	<p style='margin:0;margin-bottom:7px'>{{ export.process.description }}</p>
+	{% if export.process.definition %}
+		<p style='margin:0;margin-bottom:7px'>Vorgangsdefinition: {{ export.process.definition }}</p>
+	{% endif %}
+	<p style='margin:0;margin-bottom:7px'>Kampagne: {{ export.campaign.name }}</p>
+	<p style='margin:0;margin-bottom:7px'>Mitarbeiter: {{ export.user.getLastname() }} {{ export.user.getFirstname() }}</p>
+	<p style='margin:0;'>
+		Status:
+		{% if export.process.isDone %}
+			Vollständig
+		{% else %}
+			Unvollständig
+		{% endif %}
+	</p>
+	<p style='margin:0;margin-bottom:7px'>Punktzahl: {{ export.process.score }} / {{ export.campaign.maxScore | number_format(0) }}</p>
+	<p style='margin:0'>Vorgang erstellt am: {{ export.process.date | date('d.m.Y') }}</p>
+	<p style='margin:0'>Dokument erstellt am: {{ today | date('d.m.Y') }}</p>
+
+	<hr>
+
+	{% for form in export.data %}
+
+		<div style='margin-bottom:3em'>
+			<h2 style='margin-bottom:7px'>{{ form.title }}</h2>
+
+			{% if form.type == 2 or form.type == 3 or form.type == 5 %}
+				<p style='margin:0'><i>{{ form.description }}</i></p>
+			{% endif %}
+
+			{% for submit in form.submits %}
+				<hr style='border:1px solid #ccc;'>
+
+				<p style='margin:0;margin-bottom:0;color:#333;font-size:10px;'>{{ submit.date | date('d.m.Y') }}</p>
+
+				{% if form.type == 0 or form.type == 1 or form.type == 2 or form.type == 5 %}
+					<div style='margin:0;margin-top:-10px;'>
+						{% for entry in submit %}
+							<p style='margin:0;margin-bottom:5px;'>
+								{% if form.type == 0 or form.type == 1 or form.type == 2 or form.type == 5 %}
+									<b style='margin:0;'>{{ entry.q }}</b><br>
+								{% endif %}
+
+								{% if form.type == 0 %}
+									<span style='margin-left:10px;color:#333;'>{{ entry.a | join(', ') }}</span>
+								{% elseif form.type == 1 %}
+									<span style='margin-left:10px;color:#333;'>{{ entry.a }}</span>
+								{% elseif form.type == 2 %}
+									<span style='margin-left:10px;color:#333;'>{{ entry.a }}</span>
+								{% elseif form.type == 5 %}
+									<span style='margin-left:10px;color:#333;'>{{ entry.a }}</span>
+								{% endif %}
+							</p>
+						{% endfor %}
+					</div>
+				{% elseif form.type == 3 %}
+					<span style='margin-left:10px;color:#333;'>{{ submit.message }}</span>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+	{% endfor %}
+
+</div>

@@ -1,0 +1,26 @@
+<div style='font-family:arial;'>
+	Hallo <b>{{ receiver.fullname }}</b>,
+
+	<br>
+	<br>
+
+	es wurde ein neuer Beitrag von <b>{{ author.fullname }}</b> auf der Pinnwand <b>{{ timeline.name }}</b> veröffentlicht: <i>„{{ post.title }}“</i>
+	
+	<br>
+	<br>
+
+	{% if sendDeeplink %}
+		Mit einem Klick auf diesen Link kannst du dir den Beitrag direkt ansehen:<br>
+		<a href='{{ post.url }}'>{{ post.url }}</a>
+		<br>
+		<br>
+	{% endif %}
+
+	Mit freundlichen Grüßen<br>
+	Dein visitares-Team
+
+	<br>
+	<br>
+	
+	<small><i>Diese E-Mail wurde automatisch generiert am {{ "now" | date("d.m.Y H:i") }}</i></small>
+</div>

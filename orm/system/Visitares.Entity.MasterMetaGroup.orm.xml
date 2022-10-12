@@ -1,0 +1,12 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\MasterMetaGroup' table='master_metagroup'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+
+		<!-- Relations -->
+		<many-to-one field='master' target-entity='Visitares\Entity\Master' nullable='false' />
+		<many-to-one field='metaGroup' target-entity='Visitares\Entity\MetaGroup' nullable='false' />
+	</entity>
+</doctrine-mapping>

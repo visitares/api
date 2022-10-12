@@ -1,0 +1,53 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Form' table='form'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<!-- Relations -->
+		<many-to-one field='category' target-entity='Visitares\Entity\Category' />
+		<many-to-one field='catalogEntry' target-entity='Visitares\Entity\CatalogEntry' />
+		<one-to-many field='inputs' target-entity='Visitares\Entity\Input' mapped-by='form'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-many>
+		<one-to-many field='documents' target-entity='Visitares\Entity\Attachment' mapped-by='form' />
+
+		<!-- Data -->
+		<field name='isActive' type='boolean' />
+		<field name='type' type='integer' />
+		<field name='sort' type='integer' nullable='true' />
+		<field name='publicStats' type='boolean' />
+		<field name='maxScore' type='decimal' precision='9' scale='2' nullable='true' />
+		<field name='singleSubmitOnly' type='boolean' />
+		<field name='media' type='string' nullable='true' />
+		<field name='url' type='string' nullable='true' />
+		<field name='embedUrl' type='boolean' />
+
+		<!-- Translated Fields -->
+		<one-to-one field='nameTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+		<one-to-one field='descriptionTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+		<one-to-one field='shortDescriptionTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+		<one-to-one field='htmlTextTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+	</entity>
+</doctrine-mapping>

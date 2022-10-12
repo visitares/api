@@ -1,0 +1,57 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Instance' table='instance'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<many-to-one field='master' target-entity='Visitares\Entity\Master' />
+		<many-to-one field='timeline' target-entity='Visitares\Entity\Timeline' />
+
+		<!-- Data -->
+		<field name='isActive' type='boolean' />
+		<field name='isTemplate' type='boolean' />
+		<field name='customerNumber' type='string' length='100' />
+		<field name='token' type='string' length='6' />
+		<field name='registrationToken' type='string' length='32' />
+		<field name='domain' type='string' length='50' />
+		<field name='name' type='string' length='250' />
+		<field name='shortDescription' type='text' />
+		<field name='description' type='text' />
+		<field name='statsDayRange' type='integer' />
+		<field name='statsMinUserCount' type='integer' />
+		<field name='usersCountByContract' type='integer' />
+		<field name='messageAdministration' type='boolean' />
+		<field name='logoffTimer' type='integer' />
+		<field name='country' type='string' length='2' nullable='true' />
+		<field name='postalCode' type='string' length='10' nullable='true' />
+		<field name='city' type='string' length='100' nullable='true' />
+		<field name='street' type='string' length='100' nullable='true' />
+		<field name='sector' type='string' length='100' nullable='true' />
+		<field name='logo' type='string' length='64' nullable='true' />
+		<field name='background' type='string' length='64' nullable='true' />
+		<field name='backgroundId' column='background_id' type='integer' nullable='true' />
+		<field name='imageGroups' type='text' nullable='true' />
+		<field name='settings' type='text' nullable='true' />
+		<field name='cmsConfig' type='text' nullable='true' />
+		<field name='messageModule' type='boolean' />
+		<field name='defaultRegistrationRole' type='integer' />
+		<field name='notifyEmail' type='string' nullable='true' />
+		<field name='appSendDeeplinks' type='boolean' />
+
+		<field name='appDefaultUserMode' type='string' />
+		<field name='showMyProcesses' type='boolean' />
+		<field name='showAppAnonymousButton' type='boolean' />
+		<field name='showAppUserSettings' type='boolean' />
+		<field name='showAppLogout' type='boolean' />
+		
+		<field name='showFormSearch' type='boolean' />
+		<field name='showFormSearchShortDescription' type='boolean' />
+		<field name='showFormSearchDescription' type='boolean' />
+		
+		<field name='allowInstructions' type='boolean' />
+
+	</entity>
+</doctrine-mapping>

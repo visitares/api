@@ -1,0 +1,1 @@
+bin/phinx rollback -t $1 -c ./migrations/config/visitares.php

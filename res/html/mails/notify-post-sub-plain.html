@@ -1,0 +1,12 @@
+Hallo {{ receiver.fullname }},
+
+es wurde ein neuer Beitrag von {{ author.fullname }} auf der Pinnwand <b>{{ timeline.name }}</b> veröffentlicht. Über diesen Link kannst du dir den Beitrag direkt ansehen:
+
+  „{{ post.title }}“
+  {{ post.url }}
+
+Mit freundlichen Grüßen
+Dein visitares-Team
+
+
+Diese E-Mail wurde automatisch generiert am {{ "now" | date("d.m.Y H:i") }}

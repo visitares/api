@@ -1,0 +1,37 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Catalog' table='catalog'>
+
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+		<field name='allowInstructions' type='boolean' nullable='false' />
+
+		<!-- Relations -->
+		<one-to-many field='attributes' target-entity='Visitares\Entity\CatalogAttribute' mapped-by='catalog'>
+			<cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-many>
+		<one-to-many field='entries' target-entity='Visitares\Entity\CatalogEntry' mapped-by='catalog'>
+			<cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-many>
+
+		<!-- Translated Fields -->
+		<one-to-one field='nameTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+		<one-to-one field='descriptionTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+
+	</entity>
+</doctrine-mapping>

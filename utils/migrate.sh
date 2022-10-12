@@ -1,0 +1,1 @@
+bin/phinx migrate -c ./migrations/config/visitares.php

@@ -1,0 +1,23 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Translated' table='translated'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+		<field name='languageId' column='language_id' type='integer' nullable='true' />
+		<field name='translationId' column='translation_id' type='integer' nullable='true' />
+
+		<!-- Relations -->
+		<many-to-one field='language' target-entity='Visitares\Entity\Language' />
+		<many-to-one field='translation' target-entity='Visitares\Entity\Translation' inversed-by='translations'>
+			<cascade>
+				<cascade-all />
+			</cascade>
+		</many-to-one>
+
+		<!-- Data -->
+		<field name='content' type='text' />
+	</entity>
+</doctrine-mapping>

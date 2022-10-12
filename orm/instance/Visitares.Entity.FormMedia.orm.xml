@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\FormMedia' table='form_media'>
+		<!-- Primary Key -->
+		<id name='form' association-key='true' />
+		<id name='media' association-key='true' />
+
+		<!-- Meta -->
+		<many-to-one field='form' target-entity='Visitares\Entity\Form' />
+		<many-to-one field='media' target-entity='Visitares\Entity\Media' />
+
+		<!-- Data -->
+		<field name='sort' type='integer' />
+		<field name='creationDate' type='datetime' />
+	</entity>
+</doctrine-mapping>

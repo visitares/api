@@ -1,0 +1,27 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Media' table='media'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<!-- Relations -->
+		<many-to-one field='group' target-entity='Visitares\Entity\MediaGroup' />
+		<many-to-one field='language' target-entity='Visitares\Entity\Language' />
+
+		<!-- Data -->
+		<field name='masterId' column='master_id' type='integer' nullable='true' />
+		<field name='instanceToken' column='instance_token' type='string' nullable='true' />
+		<field name='label' type='string' />
+		<field name='description' type='string' />
+		<field name='type' type='integer' nullable='false' />
+		<field name='mime' type='string' />
+		<field name='filename' type='string' />
+		<field name='originalFilename' type='string' />
+		<field name='ext' type='string' />
+		<field name='filesize' type='integer' />
+		<field name='length' type='string' />
+	</entity>
+</doctrine-mapping>

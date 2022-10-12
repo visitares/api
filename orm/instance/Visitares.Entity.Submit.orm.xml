@@ -1,0 +1,20 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Submit' table='submit'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+		<field name='token' type='string' length='16' nullable='true' />
+
+		<!-- Relations -->
+		<many-to-one field='form' target-entity='Visitares\Entity\Form' />
+		<many-to-one field='user' target-entity='Visitares\Entity\User' />
+		<many-to-one field='submitInstance' target-entity='Visitares\Entity\UserSubmitInstance' />
+		<many-to-one field='language' target-entity='Visitares\Entity\Language' />
+		<many-to-one field='categoryProcess' target-entity='Visitares\Entity\CategoryProcess' />
+		<one-to-many field='values' target-entity='Visitares\Entity\Value' mapped-by='submit' />
+		<one-to-many field='messages' target-entity='Visitares\Entity\Message' mapped-by='submit' />
+	</entity>
+</doctrine-mapping>

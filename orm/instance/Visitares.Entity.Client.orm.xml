@@ -1,0 +1,39 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\Client' table='client'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<!-- Relations -->
+		<one-to-many field='categories' target-entity='Visitares\Entity\Category' mapped-by='client'>
+			<cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-many>
+
+		<!-- Data -->
+		<!-- <field name='name' type='string' /> -->
+		<!-- <field name='description' type='text' /> -->
+		<field name='isActive' type='boolean' />
+		<field name='iconId' column='icon_id' type='integer' nullable='true' />
+		<field name='sort' type='integer' nullable='true' />
+		<field name='lineBreak' type='boolean' />
+		<field name='dividingLine' type='boolean' />
+
+		<!-- Translated Fields -->
+		<one-to-one field='nameTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+		<one-to-one field='descriptionTranslation' target-entity='Visitares\Entity\Translation'>
+			 <cascade>
+				<cascade-all />
+			</cascade>
+		</one-to-one>
+
+	</entity>
+</doctrine-mapping>

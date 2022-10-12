@@ -1,0 +1,29 @@
+<doctrine-mapping xmlns='http://doctrine-project.org/schemas/orm/doctrine-mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd'>
+	<entity name='Visitares\Entity\UserSubmitInstance' table='usersubmitinstance'>
+		<!-- Meta -->
+		<id name='id' type='integer'>
+			<generator strategy='AUTO' />
+		</id>
+		<field name='creationDate' type='datetime' />
+		<field name='modificationDate' type='datetime' nullable='true' />
+
+		<!-- Relations -->
+		<many-to-one field='category' target-entity='Visitares\Entity\Category' />
+		<many-to-one field='user' target-entity='Visitares\Entity\User' />
+		<many-to-one field='webinstructor' target-entity='Visitares\Entity\User' />
+		<many-to-one field='instructedForm' target-entity='Visitares\Entity\Form' />
+
+		<!-- Data -->
+		<field name='isDone' type='boolean' />
+		<field name='score' type='integer' />
+		<field name='name' type='string' length='250' />
+		<field name='description' type='text' />
+		<field name='definition' type='text' nullable='true' />
+		<field name='isInstructed' type='boolean' nullable='false' />
+		
+		<field name='instructionByName' type='text' nullable='true' />
+		<field name='instructionCompany' type='text' nullable='true' />
+		<field name='instructionLocation' type='text' nullable='true' />
+
+	</entity>
+</doctrine-mapping>
