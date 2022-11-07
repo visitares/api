@@ -2,7 +2,7 @@
 
 namespace Visitares\JobQueue;
 
-use Auryn\Provider;
+use Auryn\Injector;
 use Visitares\JobQueue\JobStatus;
 
 class WorkerFactory{
@@ -13,17 +13,17 @@ class WorkerFactory{
 	private $pdo;
 
 	/**
-	 * @var Provider
+	 * @var Injector
 	 */
 	private $provider;
 
 	/**
 	 * @param \PDO $pdo
-	 * @param Provider $provider
+	 * @param Injector $provider
 	 */
 	public function __construct(
 		\PDO $pdo,
-		Provider $provider
+		Injector $provider
 	){
 		$this->pdo = $pdo;
 		$this->provider = $provider;

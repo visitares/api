@@ -2,6 +2,7 @@
 
 namespace Visitares\Config;
 
+use Auryn\Injector;
 use PDO;
 use Auryn\Provider;
 use PHPMailer;
@@ -12,9 +13,9 @@ use Twig\{ Environment, Loader\FilesystemLoader };
  *
  * @author Ricard Derheim <rderheim@derheim-software.de>
  */
-$provider = new Provider;
+$provider = new Injector;
 
-$provider->delegate('Auryn\Provider', function() use($provider){
+$provider->delegate('Auryn\Injector', function() use($provider){
 	return $provider;
 });
 

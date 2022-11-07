@@ -98,7 +98,7 @@ class Router implements ArrayAccess{
 	 * @param  string $uri
 	 * @return boolean
 	 */
-	public function offsetExists($uri){
+	public function offsetExists($uri): bool {
 		return array_key_exists($uri, $this->routes);
 	}
 
@@ -106,7 +106,7 @@ class Router implements ArrayAccess{
 	 * @param  string $uri
 	 * @return array|null
 	 */
-	public function offsetGet($uri){
+	public function offsetGet($uri) : mixed {
 		return $this->routes[$uri];
 	}
 
@@ -115,7 +115,7 @@ class Router implements ArrayAccess{
 	 * @param  array $values
 	 * @return void
 	 */
-	public function offsetSet($uri, $values){
+	public function offsetSet($uri, $values): void {
 		$this->routes[$uri] = $values;
 	}
 
@@ -123,7 +123,7 @@ class Router implements ArrayAccess{
 	 * @param  string $uri
 	 * @return void
 	 */
-	public function offsetUnset($uri){
+	public function offsetUnset($uri): void {
 		unset($this->routes[$uri]);
 	}
 

@@ -45,6 +45,7 @@ $validReferers = [
 $allowOrigin = '*';
 
 
+$host = '';
 foreach(['HTTP_ORIGIN', 'HTTP_REFERER', 'SERVER_NAME'] as $referer){
 	if(isset($_SERVER[$referer])){
 		$host = $_SERVER[$referer];
