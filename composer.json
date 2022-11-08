@@ -10,14 +10,12 @@
   ],
   "require": {
     "php": ">=8.1",
-    "doctrine/common": "^2",
-    "doctrine/orm": "^2",
+    "doctrine/orm": "^2.13",
     "ircmaxell/random-lib": "1.1.*@dev",
-    "monolog/monolog": "1.9.*@dev",
-    "phpmailer/phpmailer": "dev-master",
+    "phpmailer/phpmailer": "^6",
     "rdlowrey/auryn": "^1",
-    "robmorgan/phinx": "0.4.4",
-    "symfony/http-foundation": "^6",
+    "robmorgan/phinx": "^0",
+    "symfony/http-foundation": "*",
     "twig/twig": "1.*",
     "respect/validation": "0.9.*@dev",
     "spipu/html2pdf": "^5"

@@ -4,7 +4,10 @@ namespace Visitares\Cronjobs;
 
 use ErrorException;
 use PHPMailer\PHPMailer\PHPMailer;
+use Visitares\Entity\Instance;
 use Visitares\ErrorHandler;
+use Visitares\Storage\Facade\InstanceStorageFacade;
+use Visitares\Storage\Facade\SystemStorageFacade;
 
 require(__DIR__ . '/config/config.php');
 require(APP_DIR_ROOT . '/vendor/autoload.php');
@@ -49,6 +52,11 @@ check('email server', function($provider){
   if(!$mail->send()){
     throw new ErrorException(sprintf('Mail could not be sent: %s', $mail->ErrorInfo));
   }
+});
+
+check('SystemStorageFacade', function($provider){
+  $storage = $provider->make(SystemStorageFacade::class);
+  $em = $storage->getEntityManager();
 });
 
 printf("\n");
