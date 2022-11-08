@@ -2,7 +2,7 @@
 
 namespace Visitares\API;
 
-use PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
 use Visitares\JobQueue\Queues\SendMailQueue;
 
 class TestController {

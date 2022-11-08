@@ -2,7 +2,7 @@
 
 namespace Visitares\JobQueue\Workers;
 
-use PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
 use Visitares\Entity\{ Post, Timeline };
 use Visitares\JobQueue\JobStatus;
 use Visitares\JobQueue\Queues\SendMailQueue;

@@ -3,7 +3,7 @@
 namespace Visitares\API;
 
 use DateTime;
-use PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
 use RandomLib\Generator;
 use Twig\Environment as Twig;
 use Visitares\Entity\User;

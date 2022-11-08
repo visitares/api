@@ -5,7 +5,7 @@ namespace Visitares\Config;
 use Auryn\Injector;
 use PDO;
 use Auryn\Provider;
-use PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
 use Twig\{ Environment, Loader\FilesystemLoader };
 
 /**
@@ -129,7 +129,7 @@ $provider->define(Environment::class, [
 /**
  * PHPMailer
  */
-$provider->delegate('PHPMailer', function() use($mailConfig){
+$provider->delegate(PHPMailer::class, function() use($mailConfig){
 	$mailer = new PHPMailer;
 	$mailer->isSMTP();
 	$mailer->Host = $mailConfig['smtp']['host'];

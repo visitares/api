@@ -5,7 +5,7 @@ namespace Visitares\API;
 use DateTime;
 use Exception;
 use RandomLib\Generator;
-use PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
 use Twig\Environment as Twig;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 

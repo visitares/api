@@ -3,6 +3,7 @@
 namespace Visitares\Cronjobs;
 
 use ErrorException;
+use PHPMailer\PHPMailer\PHPMailer;
 use Visitares\ErrorHandler;
 
 require(__DIR__ . '/config/config.php');
@@ -39,14 +40,14 @@ check('job queue process manager', function($provider){
 });
 
 check('email server', function($provider){
-  $mailer = $provider->make(\PHPMailer::class);
+  $mailer = $provider->make(PHPMailer::class);
   $mail = clone $mailer;
   $mail->addAddress('rderheim@derheim-software.de');
   $mail->Subject = 'visitares test mail';
   $mail->From = 'noreply@visitares.com';
   $mail->Body = 'If you can read this, the test was successful :-)';
   if(!$mail->send()){
-    throw new ErrorException('Mail could not be sent: %s', $mail->ErrorInfo);
+    throw new ErrorException(sprintf('Mail could not be sent: %s', $mail->ErrorInfo));
   }
 });
 

@@ -2,7 +2,7 @@
 
 namespace Visitares\JobQueue\Workers;
 
-use PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
 use Twig\Environment as Twig;
 use Visitares\JobQueue\JobStatus;
 

@@ -2,7 +2,7 @@
 
 namespace Visitares\Service\Notification;
 
-use PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class Email{
 
