@@ -55,7 +55,7 @@ $provider->define('PDO', [
 		$dbConfig['default']['charset']
 	),
 	':username' => $dbConfig['db_creator']['username'],
-	':passwd' => $dbConfig['db_creator']['password'],
+	':password' => $dbConfig['db_creator']['password'],
 	':options' => [
 		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 		PDO::MYSQL_ATTR_INIT_COMMAND => 'SET SESSION SQL_BIG_SELECTS=1'
