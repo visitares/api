@@ -15,7 +15,7 @@ class Migration0012 extends AbstractMigration{
 		 * mediagroup table
 		 */
 		$this->table('mediagroup')
-			->addColumn('master_id', 'integer', [ 'null' => false ])
+			->addColumn('master_id', 'integer', [ 'signed' => false, 'null' => false ])
 			->addForeignKey('master_id', 'master', 'id', [ 'delete' => 'CASCADE' ])
 			->save();
 

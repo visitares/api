@@ -67,7 +67,7 @@ class Migration extends AbstractMigration{
 	protected function createStringTable(){
 		$this->createBaseTable('string')
 			// Data
-			->addColumn('language_id', 'integer')
+			->addColumn('language_id', 'integer', ['signed' => false])
 			->addColumn('code', 'string', [
 				'limit' => '250'
 			])
@@ -105,7 +105,7 @@ class Migration extends AbstractMigration{
 	protected function createDirtyWordTable(){
 		$this->createBaseTable('dirtyword')
 			// Data
-			->addColumn('language_id', 'integer')
+			->addColumn('language_id', 'integer', ['signed' => false])
 			->addColumn('word', 'string', [
 				'limit' => '250'
 			])

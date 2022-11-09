@@ -19,8 +19,8 @@ class Migration0017 extends AbstractMigration{
 			->save();
 
 		$this->table('master_metagroup')
-			->addColumn('master_id', 'integer', ['null' => false])
-			->addColumn('metagroup_id', 'integer', ['null' => false])
+			->addColumn('master_id', 'integer', [ 'signed' => false, 'null' => false ])
+			->addColumn('metagroup_id', 'integer', [ 'signed' => false, 'null' => false ])
 			->addForeignKey('master_id', 'master', 'id', [
 				'delete' => 'CASCADE'
 			])

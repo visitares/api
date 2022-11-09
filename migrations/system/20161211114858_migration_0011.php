@@ -15,9 +15,9 @@ class Migration0011 extends AbstractMigration{
 		 * usercache table
 		 */
 		$this->createBaseTable('usercache')
-			->addColumn('instance_id', 'integer', [ 'null' => false ])
+			->addColumn('instance_id', 'integer', [ 'signed' => false, 'null' => false ])
 			->addForeignKey('instance_id', 'instance', 'id', [ 'delete' => 'CASCADE' ])
-			->addColumn('user_id', 'integer', [ 'null' => false ])
+			->addColumn('user_id', 'integer', [ 'signed' => false, 'null' => false ])
 			->addIndex(['user_id'], ['unique' => true])
 			->addColumn('username', 'string', [ 'limit' => 100 ])
 			->addColumn('firstname', 'string', [ 'limit' => 100 ])
@@ -29,9 +29,9 @@ class Migration0011 extends AbstractMigration{
 		 * usercache table
 		 */
 		$this->createBaseTable('groupcache')
-			->addColumn('instance_id', 'integer', [ 'null' => false ])
+			->addColumn('instance_id', 'integer', [ 'signed' => false, 'null' => false ])
 			->addForeignKey('instance_id', 'instance', 'id', [ 'delete' => 'CASCADE' ])
-			->addColumn('group_id', 'integer', [ 'null' => false ])
+			->addColumn('group_id', 'integer', [ 'signed' => false, 'null' => false ])
 			->addIndex(['group_id'], ['unique' => true])
 			->addColumn('name', 'text', [ 'null' => true ])
 			->addColumn('description', 'text', [ 'null' => true ])
@@ -40,7 +40,6 @@ class Migration0011 extends AbstractMigration{
 		/**
 		 * master table
 		 */
-		echo 'create "master"-table..' . PHP_EOL;
 		$this->createBaseTable('master')
 			->addColumn('name', 'string', [ 'length' => 250, 'null' => false ])
 			->addColumn('isActive', 'boolean', [ 'default' => false, 'null' => false ])
@@ -51,7 +50,6 @@ class Migration0011 extends AbstractMigration{
 		/**
 		 * timeline table
 		 */
-		echo 'create "timeline"-table..' . PHP_EOL;
 		$this->createBaseTable('timeline')
 			->addColumn('name', 'string', [ 'length' => 250, 'null' => false ])
 			->addColumn('isActive', 'boolean', [ 'default' => false, 'null' => false ])
@@ -62,10 +60,9 @@ class Migration0011 extends AbstractMigration{
 		/**
 		 * post table
 		 */
-		echo 'create "post"-table..' . PHP_EOL;
 		$this->createBaseTable('post')
-			->addColumn('timeline_id', 'integer', [ 'null' => false ])
-			->addColumn('user_id', 'integer', [ 'null' => false ])
+			->addColumn('timeline_id', 'integer', [ 'signed' => false, 'null' => false ])
+			->addColumn('user_id', 'integer', [ 'signed' => false, 'null' => false ])
 
 			->addColumn('published', 'integer', [ 'null' => false ])
 
@@ -81,15 +78,14 @@ class Migration0011 extends AbstractMigration{
 		/**
 		 * media table
 		 */
-		echo 'create "media"-table..' . PHP_EOL;
 		$this->table('media')
 			->addColumn('creationDate', 'datetime', [ 'null' => false ])
 			->addColumn('modificationDate', 'datetime', [ 'null' => true ])
-			->addColumn('master_id', 'integer', [ 'null' => true ])
+			->addColumn('master_id', 'integer', [ 'signed' => false, 'null' => true ])
 			->addForeignKey('master_id', 'master', 'id', [ 'delete' => 'CASCADE' ])
-			->addColumn('group_id', 'integer', [ 'null' => true ])
+			->addColumn('group_id', 'integer', [ 'signed' => false, 'null' => true ])
 			->addForeignKey('group_id', 'groupcache', 'id', [ 'delete' => 'CASCADE' ])
-			->addColumn('post_id', 'integer', [ 'null' => true ])
+			->addColumn('post_id', 'integer', [ 'signed' => false, 'null' => true ])
 			->addForeignKey('post_id', 'post', 'id', [ 'delete' => 'CASCADE' ])
 			->addColumn('label', 'string', [ 'null' => true, 'length' => 200 ])
 			->addColumn('description', 'text', [ 'null' => true ])
@@ -105,7 +101,6 @@ class Migration0011 extends AbstractMigration{
 		/**
 		 * mediagroup table
 		 */
-		echo 'create "mediagroup"-table..' . PHP_EOL;
 		$this->table('mediagroup')
 			->addColumn('creationDate', 'datetime', [ 'null' => false ])
 			->addColumn('modificationDate', 'datetime', [ 'null' => true ])
@@ -117,7 +112,6 @@ class Migration0011 extends AbstractMigration{
 		/**
 		 * post-group join-table
 		 */
-		echo 'create "post_group"-table..' . PHP_EOL;
 		$this->table('post_group', [
 			'id' => false,
 			'primary_key' => [
@@ -125,8 +119,8 @@ class Migration0011 extends AbstractMigration{
 				'group_id'
 			]
 		])
-			->addColumn('post_id', 'integer', [ 'null' => false ])
-			->addColumn('group_id', 'integer', [ 'null' => false ])
+			->addColumn('post_id', 'integer', [ 'signed' => false, 'null' => false ])
+			->addColumn('group_id', 'integer', [ 'signed' => false, 'null' => false ])
 			->addForeignKey('post_id', 'post', 'id', [ 'delete' => 'CASCADE' ])
 			->save();
 			
@@ -135,7 +129,7 @@ class Migration0011 extends AbstractMigration{
 		 * update instance table
 		 */
 		$this->table('instance')
-			->addColumn('timeline_id', 'integer', ['null' => true])
+			->addColumn('timeline_id', 'integer', [ 'signed' => false, 'null' => true])
 			->addForeignKey('timeline_id', 'timeline', 'id', ['delete' => 'SET_NULL'])
 			->save();
 
