@@ -15,9 +15,9 @@ return array(
 		'driver' => 'pdo_mysql',
 		'adapter' => 'mysql',
 		'host' => '127.0.0.1',
-		'port' => '3306',
+		'port' => '3366',
 		'charset' => 'utf8',
-		'db_prefix' => ''
+		'db_prefix' => 'db12298321-'
 	),
 
 	/**
@@ -27,8 +27,8 @@ return array(
 	 * required permissions are granted.
 	 */
 	'db_creator' => array(
-		'username' => '',
-		'password' => ''
+		'username' => 'root',
+		'password' => 'other'
 	),
 
 	/**
@@ -36,7 +36,7 @@ return array(
 	 * modify the database schema at all.
 	 */
 	'db_client' => array(
-		'username' => '',
-		'password' => ''
+		'username' => 'root',
+		'password' => 'other'
 	)
 );

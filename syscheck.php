@@ -56,7 +56,7 @@ check('email server', function($provider){
 
 check('SystemStorageFacade', function($provider){
   $storage = $provider->make(SystemStorageFacade::class);
-  $em = $storage->getEntityManager();
+  $storage->instance->findByToken('qaba');
 });
 
 printf("\n");

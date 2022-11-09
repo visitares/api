@@ -16,5 +16,5 @@ return[
 	/**
 	 * Prefix for migration configuration files.
 	 */
-	'prefix' => 'visitares_'
+	'prefix' => 'db12298321-'
 ];

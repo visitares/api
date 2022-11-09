@@ -27,7 +27,7 @@ class Config extends AbstractEntity{
 		}
 	}
 
-	public function jsonSerialize(){
+	public function jsonSerialize(): mixed {
 		return[
 			'id' => $this->id,
 			'creationDate' => $this->creationDate->format('Y-m-d H:i:s'),
