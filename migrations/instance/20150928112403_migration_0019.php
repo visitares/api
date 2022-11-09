@@ -12,9 +12,11 @@ class Migration0019 extends AbstractMigration{
 	public function up(){
 		$this->table('attachment')
 			->changeColumn('message_id', 'integer', [
+				'signed' => false,
 				'null' => true
 			])
 			->addColumn('form_id', 'integer', [
+				'signed' => false,
 				'null' => true,
 				'after' => 'message_id'
 			])

@@ -25,6 +25,7 @@ class Migration0030 extends AbstractMigration{
 
 		$this->table('input')
 			->addColumn('unit_id', 'integer', [
+				'signed' => false,
 				'null' => true
 			])
 			->addForeignKey('unit_id', 'unit', 'id', [

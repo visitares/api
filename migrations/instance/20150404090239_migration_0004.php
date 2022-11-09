@@ -34,6 +34,7 @@ class Migration0004 extends AbstractMigration{
 
 			// Add refrence to `submit` table
 			->addColumn('submit_id', 'integer', [
+				'signed' => false,
 				'after' => 'user_id',
 				'null' => false
 			])

@@ -12,6 +12,7 @@ class Migration0045 extends AbstractMigration{
 	public function up(){
 		$this->table('submit')
 			->addColumn('submitinstance_id', 'integer', [
+				'signed' => false,
 				'null' => true,
 				'after' => 'language_id'
 			])

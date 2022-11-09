@@ -12,6 +12,7 @@ class Migration0029 extends AbstractMigration{
 	public function up(){
 		$this->table('category')
 			->addColumn('icon_id', 'integer', [
+				'signed' => false,
 				'null' => true,
 				'after' => 'icon'
 			])
