@@ -4,9 +4,7 @@ namespace Visitares\Cronjobs;
 
 use ErrorException;
 use PHPMailer\PHPMailer\PHPMailer;
-use Visitares\Entity\Instance;
 use Visitares\ErrorHandler;
-use Visitares\Storage\Facade\InstanceStorageFacade;
 use Visitares\Storage\Facade\SystemStorageFacade;
 
 require(__DIR__ . '/config/config.php');

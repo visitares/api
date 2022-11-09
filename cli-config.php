@@ -24,6 +24,6 @@ $provider = include(APP_DIR_ROOT . '/config/di.php');
 
 /** Create EntityManager */
 $factory = $provider->make('Visitares\Factory\Doctrine\EntityManagerFactory');
-$entityManager = $factory->getSystemEntityManager();
-#$entityManager = $factory->getInstanceEntityManager('kwiy');
+#$entityManager = $factory->getSystemEntityManager();
+$entityManager = $factory->getInstanceEntityManager('qaba');
 return ConsoleRunner::createHelperSet($entityManager);
