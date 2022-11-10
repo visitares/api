@@ -26,14 +26,22 @@ class ImageGroupsController{
 
 	public function getByInstance($token){
 		$instance = $this->storage->instance->findByToken($token);
-
 		$em = $this->storage->getEntityManager();
-		$query = $em->createQuery('
-			SELECT	i
-			FROM	Visitares\Entity\ImageGroup i
-			WHERE	i.id IN (:ids) OR i.instances IS NULL
-		');
-		$query->setParameter('ids', $instance ? $instance->getImageGroups() : []);
+
+		$query = null;
+		if($token === 'any'){
+			$query = $em->createQuery('
+				SELECT	i
+				FROM	Visitares\Entity\ImageGroup i
+			');
+		} else {
+			$query = $em->createQuery('
+				SELECT	i
+				FROM	Visitares\Entity\ImageGroup i
+				WHERE	i.id IN (:ids) OR i.instances IS NULL
+			');
+			$query->setParameter('ids', $instance ? $instance->getImageGroups() : []);
+		}
 
 		return $query->getResult();
 	}
