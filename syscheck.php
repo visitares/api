@@ -4,6 +4,8 @@ namespace Visitares\Cronjobs;
 
 use ErrorException;
 use PHPMailer\PHPMailer\PHPMailer;
+use Visitares\API\InstanceController;
+use Visitares\API\Lists\UsersListController;
 use Visitares\ErrorHandler;
 use Visitares\Storage\Facade\SystemStorageFacade;
 
@@ -55,6 +57,17 @@ check('email server', function($provider){
 check('SystemStorageFacade', function($provider){
   $storage = $provider->make(SystemStorageFacade::class);
   $storage->instance->findByToken('qaba');
+});
+
+check('InstanceController', function($provider){
+  $instanceController = $provider->make(InstanceController::class);
+  $instanceController->getAll();
+});
+
+check('UsersListController', function($provider){
+  $provider->defineParam('token', 'qaba');
+  $usersListController = $provider->make(UsersListController::class);
+  $usersListController->get([], [], 0, 1);
 });
 
 printf("\n");
