@@ -25,7 +25,7 @@ class UsersListController{
 	protected $em = null;
 
 	/**
-	 * @var PDO
+	 * @var \Doctrine\DBAL\Driver\Connection
 	 */
 	protected $pdo = null;
 
@@ -35,8 +35,7 @@ class UsersListController{
 	 */
 	public function __construct(
 		InstanceStorageFacade $storage,
-		$token,
-		PDO $pdo
+		string $token
 	){
 		$this->storage = $storage;
 		$this->storage->setToken($token);
@@ -81,13 +80,13 @@ class UsersListController{
 		]);
 
 		$query = $this->pdo->prepare($sql);
-		$query->execute($params);
-		$rows = $query->fetchAll(PDO::FETCH_ASSOC);
+		$res = $query->execute($params);
+		$rows = $res->fetchAllAssociative();
 
 		$totalSql = $this->createTotalSql($sql);
 		$query = $this->pdo->prepare($totalSql);
-		$query->execute($params);
-		$totalRows = $query->fetchAll(PDO::FETCH_ASSOC);
+		$res = $query->execute($params);
+		$totalRows = $res->fetchAllAssociative();
 
 		return[
 			'rows' => array_map(function($row){
