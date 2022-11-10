@@ -2,10 +2,9 @@
 
 namespace Visitares\API\Statistics\UserSubmitInstance;
 
-use Doctrine\ORM\EntityManager;
 use Visitares\API\CsvController;
+use Visitares\fns;
 use Visitares\Storage\Facade\InstanceStorageFacade;
-use Visitares\fn;
 
 class Export{
 
@@ -54,9 +53,9 @@ class Export{
 		$sql = str_replace('{where}', $whereClause, $sql);
 
 		$query = $this->pdo->prepare($sql);
-		$query->execute($params);
+		$res = $query->execute($params);
 
-		$rows = $query->fetchAll(\PDO::FETCH_OBJ);
+		$rows = $res->fetchAll(\PDO::FETCH_OBJ);
 		$rows = array_map([$this, 'transformRow'], $rows);
 
 		if(!$rows){
