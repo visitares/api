@@ -3,7 +3,7 @@
 namespace Visitares\Service\Export;
 
 use DateTime;
-use HTML2PDF;
+use Spipu\Html2Pdf\Html2Pdf;
 use Twig\Environment as Twig;
 
 class SubmitInstancePdfExport{
@@ -17,7 +17,7 @@ class SubmitInstancePdfExport{
 	}
 
 	public function create($export){
-		$html2pdf = new HTML2PDF('P','A4','de');
+		$html2pdf = new Html2Pdf('P','A4','de');
 		$html = $this->twig->render('html/export/process.html', [
 			'export' => $export,
 			'today' => new DateTime
@@ -25,7 +25,7 @@ class SubmitInstancePdfExport{
 		$html2pdf->writeHTML($html);
 
 		header('Content-Type: application/pdf');
-		$html2pdf->Output('export.pdf');
+		$html2pdf->output('export.pdf');
 	}
 
 }
