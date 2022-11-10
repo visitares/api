@@ -187,13 +187,15 @@ class PostListController{
 		], $sql);
 
 		$query = $this->em->getConnection()->prepare($sql);
-		$query->execute();
+		$res = $query->executeQuery();
+		$rows = (array)$res->fetchAllAssociative();
+		$rows = array_map(fn($arr) => (object)$arr, $rows);
 
 		return [
 			'total' => $this->getTotal($sql),
 			'offset' => (int)$offset,
 			'limit' => (int)$limit,
-			'rows' => array_map([$this, 'serve'], $query->fetchAll(\PDO::FETCH_OBJ))
+			'rows' => array_map([$this, 'serve'], $rows)
 		];
 	}
 
@@ -205,8 +207,10 @@ class PostListController{
 		$sql = preg_replace('/LIMIT \d+, \d+/m', '', $sql);
 		$sql = ' SELECT COUNT(*) AS total FROM (' . $sql . ') query';
 		$query = $this->em->getConnection()->prepare($sql);
-		$query->execute();
-		return (int)$query->fetchAll(\PDO::FETCH_OBJ)[0]->total;
+		$res = $query->executeQuery();
+		$rows = (array)$res->fetchAllAssociative();
+		$rows = array_map(fn($arr) => (object)$arr, $rows);
+		return (int)$rows[0]->total;
 	}
 
 	/**
@@ -219,7 +223,7 @@ class PostListController{
 		}
 
 		foreach(['creationDate', 'modificationDate'] as $prop){
-			$row->{$prop} = date('c', strtotime($row->{$prop}));
+			$row->{$prop} = $row->{$prop} ? date('c', strtotime($row->{$prop})) : null;
 		}
 
 		$user = $this->em->getRepository(CachedUser::class)->findOneBy([

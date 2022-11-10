@@ -30,8 +30,8 @@ class PostCommentsController{
 	protected function serve(Comment $comment){
 		$array = $comment->toArray();
 
-		$array['creationDate'] = date('c', strtotime($array['creationDate']));
-		$array['modificationDate'] = date('c', strtotime($array['modificationDate']));
+		$array['creationDate'] = $array['creationDate'] ? date('c', strtotime($array['creationDate'])) : null;
+		$array['modificationDate'] = $array['modificationDate'] ? date('c', strtotime($array['modificationDate'])) : null;
 
 		unset($array['post']);
 		$array['user'] = [

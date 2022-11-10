@@ -44,8 +44,8 @@ class Export{
 			];
 		}
 
-		$filter['Period']['From'] = date('Y-m-d', strtotime($filter['Period']['From'])) . ' 00:00:00';
-		$filter['Period']['To'] = date('Y-m-d', strtotime($filter['Period']['To'])) . ' 23:59:59';
+		$filter['Period']['From'] = $filter['Period']['From'] ? (date('Y-m-d', strtotime($filter['Period']['From'])) . ' 00:00:00') : null;
+		$filter['Period']['To'] = $filter['Period']['To'] ? (date('Y-m-d', strtotime($filter['Period']['To'])) . ' 23:59:59') : null;
 
 		list($params, $whereClause) = $this->createWhere($filter);
 

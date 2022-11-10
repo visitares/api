@@ -152,11 +152,11 @@ class SubmitInstancesListController{
 
 				case 'creationDate.from':
 					$qb->andWhere(sprintf('si.creationDate >= ?%d', $i));
-					$params[$i] = date('Y-m-d', strtotime($value)) . ' 00:00:00';
+					$params[$i] = $value ? (date('Y-m-d', strtotime($value)) . ' 00:00:00') : null;
 					break;
 				case 'creationDate.to':
 					$qb->andWhere(sprintf('si.creationDate <= ?%d', $i));
-					$params[$i] = date('Y-m-d', strtotime($value)) . ' 66:66:66';
+					$params[$i] = $value ? (date('Y-m-d', strtotime($value)) . ' 66:66:66') : null;
 					break;
 
 				default:
