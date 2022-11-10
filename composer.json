@@ -16,8 +16,7 @@
     "rdlowrey/auryn": "^1",
     "robmorgan/phinx": "^0",
     "symfony/http-foundation": "*",
-    "twig/twig": "1.*",
-    "respect/validation": "0.9.*@dev",
+    "twig/twig": "^2",
     "spipu/html2pdf": "^5"
   },
   "autoload": {
