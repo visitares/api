@@ -63,7 +63,7 @@ class CreateInstance{
 	protected $pdo = null;
 
 	/**
-	 * @var PDO
+	 * @var string
 	 */
 	protected $dbPrefix = null;
 
@@ -75,7 +75,7 @@ class CreateInstance{
 	 * @param DatabaseManager $dbManager
 	 * @param Generator $random
 	 * @param Migration $migration
-	 * @param boolean $useExistingDbs
+	 * @param bool $useExistingDbs
 	 * @param PDO $pdo
 	 * @param string $dbPrefix
 	 */
@@ -89,7 +89,7 @@ class CreateInstance{
 		Migration $migration,
 		$useExistingDbs,
 		PDO $pdo,
-		$dbPrefix
+		string $dbPrefix
 	){
 		$this->emFactory = $emFactory;
 		$this->db = $db;
