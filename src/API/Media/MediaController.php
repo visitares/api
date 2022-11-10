@@ -103,12 +103,13 @@ class MediaController{
 		}
 
 		if($file instanceof UploadedFile){
-			$storedFile = $this->mediaService->store($file);
 			$media->setMime($file->getClientMimeType());
-			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
 			$media->setFilesize($file->getSize());
+
+			$storedFile = $this->mediaService->store($file);
+			$media->setFilename($storedFile->filename);
 
 			if(strpos($media->getMime(), 'video/') !== false){
 				$this->videoPreviewService->create($media, $this->storage->getToken());
@@ -160,12 +161,13 @@ class MediaController{
 		}
 
 		if($file instanceof UploadedFile){
-			$storedFile = $this->mediaService->store($file);
 			$media->setMime($file->getClientMimeType());
-			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
 			$media->setFilesize($file->getSize());
+			
+			$storedFile = $this->mediaService->store($file);
+			$media->setFilename($storedFile->filename);
 
 			if(strpos($media->getMime(), 'video/') !== false){
 				$this->videoPreviewService->create($media, $this->storage->getToken());

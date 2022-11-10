@@ -96,12 +96,13 @@ class MasterMediaController{
 			$dir = sprintf(APP_DIR_ROOT . '/web/shared/master/%d/media', $mid);
 			$this->mediaService->setOverrideDir($dir);
 
-			$storedFile = $this->mediaService->store($file);
 			$media->setMime($file->getClientMimeType());
-			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
 			$media->setFilesize($file->getSize());
+
+			$storedFile = $this->mediaService->store($file);
+			$media->setFilename($storedFile->filename);
 			
 			if(strpos($media->getMime(), 'video/') !== false){
 				$this->videoPreviewService->setOverrideDir($dir);
@@ -149,12 +150,13 @@ class MasterMediaController{
 		$this->mediaService->setOverrideDir($dir);
 
 		if($file instanceof UploadedFile){
-			$storedFile = $this->mediaService->store($file);
 			$media->setMime($file->getClientMimeType());
-			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
 			$media->setFilesize($file->getSize());
+			
+			$storedFile = $this->mediaService->store($file);
+			$media->setFilename($storedFile->filename);
 
 			if(strpos($media->getMime(), 'video/') !== false){
 				$this->videoPreviewService->setOverrideDir($dir);

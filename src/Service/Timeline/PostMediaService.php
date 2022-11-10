@@ -51,16 +51,17 @@ class PostMediaService{
 	 */
 	public function create(Post $post, UploadedFile $file){
 		$dir = $this->getDir($post);
-		$stored = $this->store($file, $dir);
 
 		$media = new PostMedia;
 		$media->setType(Media::TYPE_OTHER);
 		$media->setPost($post);
 		$media->setMime($file->getClientMimeType());
-		$media->setFilename($stored->filename);
 		$media->setOriginalFilename($file->getClientOriginalName());
 		$media->setExt($file->getClientOriginalExtension());
 		$media->setFilesize($file->getSize());
+		
+		$stored = $this->store($file, $dir);
+		$media->setFilename($stored->filename);
 
 		if(strpos($media->getMime(), 'video/') !== false){
 			$media->setType(Media::TYPE_VIDEO);

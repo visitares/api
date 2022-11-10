@@ -85,13 +85,14 @@ class MediaController{
 		$media->setType($data['type']);
 
 		if($file instanceof UploadedFile){
-			$storedFile = $this->mediaService->store($file);
 			$media->setMime($file->getClientMimeType());
-			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
 			$media->setFilesize($file->getSize());
 			$media->setLength($data['length']);
+			
+			$storedFile = $this->mediaService->store($file);
+			$media->setFilename($storedFile->filename);
 		}
 
 		if($file === false){
@@ -128,12 +129,13 @@ class MediaController{
 		echo $media->getLength();exit;
 
 		if($file instanceof UploadedFile){
-			$storedFile = $this->mediaService->store($file);
 			$media->setMime($file->getClientMimeType());
-			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
 			$media->setFilesize($file->getSize());
+			
+			$storedFile = $this->mediaService->store($file);
+			$media->setFilename($storedFile->filename);
 		}
 
 		if($file === null){
