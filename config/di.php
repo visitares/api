@@ -30,6 +30,7 @@ $migrationConfig = include(__DIR__ . '/migration.php');
  * Global params
  */
 $provider->defineParam('useExistingDbs', true);
+$provider->defineParam('dbPrefix', $dbConfig['default']['db_prefix']);
 
 /**
  * Provider
@@ -37,7 +38,6 @@ $provider->defineParam('useExistingDbs', true);
 $provider->delegate(Provider::class, function() use($provider){
 	return $provider;
 });
-
 
 /**
  * PDO
@@ -60,17 +60,6 @@ $provider->define('PDO', [
 		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 		PDO::MYSQL_ATTR_INIT_COMMAND => 'SET SESSION SQL_BIG_SELECTS=1'
 	]
-]);
-
-/**
- * DatabaseManager
- */
-$provider->define('Visitares\Service\Database\DatabaseManager', [
-	':dbPrefix' => $dbConfig['default']['db_prefix']
-]);
-
-$provider->define('Visitares\UseCase\Instance\CreateInstance', [
-	':dbPrefix' => $dbConfig['default']['db_prefix']
 ]);
 
 /**
