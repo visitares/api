@@ -12,9 +12,9 @@ class FormSearchController{
   private $storage;
 
   /**
-   * @var SystemStorageFacade
+   * @var \Doctrine\DBAL\Driver\PDO\Connection
    */
-  private $systemStorage;
+  private $pdo;
 
   /**
    * @param InstanceStorageFacade $storage
@@ -39,7 +39,12 @@ class FormSearchController{
    * @return array
    */
   public function search(int $uid, string $search, string $lang = 'de'){
-    $rows = $this->pdo->query(sprintf('SELECT group_id AS id FROM group_user WHERE user_id = %d', $uid))->fetchAll(\PDO::FETCH_OBJ);
+    $rows = $this->pdo
+      ->query(sprintf('SELECT group_id AS id FROM group_user WHERE user_id = %d', $uid))
+      ->fetchAllAssociative();
+    
+    $rows = array_map(fn($arr) => (object)$arr, $rows);
+
     $groupIds = array_map(function($row){
       return intval($row->id);
     }, $rows);
@@ -117,17 +122,20 @@ class FormSearchController{
     $sql = str_replace(':GroupIds', implode(', ', $groupIds), $sql);
 
     $stmt = $this->pdo->prepare($sql);
-    $stmt->execute([
+    $res = $stmt->execute([
       ':Search' => sprintf('%%%s%%', $search),
       ':LanguageCode' => $lang,
     ]);
+
+    $rows = $res->fetchAllAssociative();
+    $rows = array_map(fn($arr) => (object)$arr, $rows);
 
     return array_map(function($row){
       $row->FormId = intval($row->FormId);
       $row->SectionId = intval($row->SectionId);
       $row->CampaignId = intval($row->CampaignId);
       return $row;
-    }, $stmt->fetchAll(\PDO::FETCH_OBJ));
+    }, $rows);
   }
 
 }
