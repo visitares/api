@@ -39,7 +39,7 @@ class FormSearchController{
    * @return array
    */
   public function search(int $uid, string $search, string $lang = 'de'){
-    $rows = $this->pdo
+    $rows = (array)$this->pdo
       ->query(sprintf('SELECT group_id AS id FROM group_user WHERE user_id = %d', $uid))
       ->fetchAllAssociative();
     
@@ -127,7 +127,7 @@ class FormSearchController{
       ':LanguageCode' => $lang,
     ]);
 
-    $rows = $res->fetchAllAssociative();
+    $rows = (array)$res->fetchAllAssociative();
     $rows = array_map(fn($arr) => (object)$arr, $rows);
 
     return array_map(function($row){
