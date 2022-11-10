@@ -60,7 +60,7 @@ class PostMediaService{
 		$media->setFilename($stored->filename);
 		$media->setOriginalFilename($file->getClientOriginalName());
 		$media->setExt($file->getClientOriginalExtension());
-		$media->setFilesize($file->getClientSize());
+		$media->setFilesize($file->getSize());
 
 		if(strpos($media->getMime(), 'video/') !== false){
 			$media->setType(Media::TYPE_VIDEO);
@@ -85,7 +85,7 @@ class PostMediaService{
 	 * @return string
 	 */
 	protected function store(UploadedFile $file, $dir){
-		$hash = hash('sha256', $file->getClientOriginalName() . (new DateTime)->format('Y-m-d H:i:s') . $file->getClientSize());
+		$hash = hash('sha256', $file->getClientOriginalName() . (new DateTime)->format('Y-m-d H:i:s') . $file->getSize());
 
 		$filename = sprintf('%s.%s', $hash, $file->getClientOriginalExtension());
 		$location = sprintf('%s/%s', $dir, $filename);

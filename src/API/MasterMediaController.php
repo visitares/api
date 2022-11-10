@@ -101,7 +101,7 @@ class MasterMediaController{
 			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
-			$media->setFilesize($file->getClientSize());
+			$media->setFilesize($file->getSize());
 			
 			if(strpos($media->getMime(), 'video/') !== false){
 				$this->videoPreviewService->setOverrideDir($dir);
@@ -154,7 +154,7 @@ class MasterMediaController{
 			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
-			$media->setFilesize($file->getClientSize());
+			$media->setFilesize($file->getSize());
 
 			if(strpos($media->getMime(), 'video/') !== false){
 				$this->videoPreviewService->setOverrideDir($dir);

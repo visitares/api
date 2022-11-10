@@ -42,7 +42,7 @@ class MediaService{
 	 * @return array
 	 */
 	public function store(UploadedFile $file){
-		$hash = hash('sha256', $file->getClientOriginalName() . (new DateTime)->format('Y-m-d H:i:s') . $file->getClientSize());
+		$hash = hash('sha256', $file->getClientOriginalName() . (new DateTime)->format('Y-m-d H:i:s') . $file->getSize());
 
 		$dir = $this->getDir();
 		$filename = sprintf('%s.%s', $hash, $file->getClientOriginalExtension());

@@ -90,7 +90,7 @@ class MediaController{
 			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
-			$media->setFilesize($file->getClientSize());
+			$media->setFilesize($file->getSize());
 			$media->setLength($data['length']);
 		}
 
@@ -133,7 +133,7 @@ class MediaController{
 			$media->setFilename($storedFile->filename);
 			$media->setOriginalFilename($file->getClientOriginalName());
 			$media->setExt($file->getClientOriginalExtension());
-			$media->setFilesize($file->getClientSize());
+			$media->setFilesize($file->getSize());
 		}
 
 		if($file === null){
