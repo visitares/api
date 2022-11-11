@@ -27,7 +27,8 @@ class PDOFactory{
 				$this->config['default']['charset']
 			);
 			$this->pool[$token] = new PDO($dsn, $this->config['db_creator']['username'], $this->config['db_creator']['password'], [
-				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+				PDO::MYSQL_ATTR_INIT_COMMAND => 'SET SESSION SQL_BIG_SELECTS=1',
 			]);
 		}
 		return $this->pool[$token];
