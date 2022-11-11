@@ -50,7 +50,7 @@ class CloneInstance extends CreateInstance{
 
 		$tables = array_map(function(array $row){
 			return $row[0];
-		}, $pdoSource->query('SHOW TABLES;')->fetchAll(\PDO::FETCH_NUM));
+		}, $pdoSource->query('SHOW TABLES;')->fetchAllNumeric(\PDO::FETCH_NUM));
 
 		$sourceDbName = $this->dbPrefix . $source->getToken();
 		$targetDbName = $this->dbPrefix . $target->getToken();
@@ -68,7 +68,7 @@ class CloneInstance extends CreateInstance{
 			'value',
 		];
 
-		$pdoTarget->query('SET FOREIGN_KEY_CHECKS=0;')->execute();
+		$pdoTarget->query('SET FOREIGN_KEY_CHECKS=0;');
 		foreach($tables as $table){
 			try{
 				if(in_array($table, $exclude)){
@@ -100,7 +100,7 @@ class CloneInstance extends CreateInstance{
 			);
 		}
 
-		$pdoTarget->query('SET FOREIGN_KEY_CHECKS=1;')->execute();
+		$pdoTarget->query('SET FOREIGN_KEY_CHECKS=1;');
 
 		return true;
 	}
