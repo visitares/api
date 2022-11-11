@@ -10,7 +10,7 @@
   ],
   "require": {
     "php": ">=8.1",
-    "doctrine/orm": "^2.13",
+    "doctrine/orm": "^2",
     "ircmaxell/random-lib": "1.1.*@dev",
     "phpmailer/phpmailer": "^6",
     "rdlowrey/auryn": "^1",
