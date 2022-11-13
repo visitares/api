@@ -11,8 +11,8 @@ class Migration0013 extends AbstractMigration{
 	 */
 	public function up(){
 		$this->table('submit_group')
-			->addColumn('submit_id', 'integer', ['signed' => true])
-			->addColumn('group_id', 'integer', ['signed' => true])
+			->addColumn('submit_id', 'integer', ['signed' => false])
+			->addColumn('group_id', 'integer', ['signed' => false])
 
 			->addForeignKey('submit_id', 'submit', 'id', [
 				'delete' => 'CASCADE'

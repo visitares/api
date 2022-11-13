@@ -10,14 +10,14 @@ class Migration0067 extends AbstractMigration{
   public function change(){
 
     $this->table('catalog')
-      ->addColumn('descriptionTranslation_id', 'integer', ['signed' => true])
+      ->addColumn('descriptionTranslation_id', 'integer', ['signed' => false])
         ->addForeignKey('descriptionTranslation_id', 'translation', 'id', [
           'delete' => 'RESTRICT'
         ])
       ->save();
 
     $this->table('catalog_entry')
-      ->addColumn('descriptionTranslation_id', 'integer', ['signed' => true])
+      ->addColumn('descriptionTranslation_id', 'integer', ['signed' => false])
         ->addForeignKey('descriptionTranslation_id', 'translation', 'id', [
           'delete' => 'RESTRICT'
         ])

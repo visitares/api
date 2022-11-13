@@ -6,7 +6,7 @@ class Migration0069 extends AbstractMigration{
   public function change(){
     $this->table('form')
       ->addColumn('htmlTextTranslation_id', 'integer', [
-        'signed' => true,
+        'signed' => false,
         'null' => true,
         'after' => 'descriptionTranslation_id',
       ])

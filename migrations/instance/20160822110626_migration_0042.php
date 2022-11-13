@@ -29,7 +29,7 @@ class Migration0042 extends AbstractMigration{
 
 		$this->table('media')
 			->addColumn('group_id', 'integer', [
-				'signed' => true,
+				'signed' => false,
 				'null' => true,
 				'after' => 'modificationDate'
 			])

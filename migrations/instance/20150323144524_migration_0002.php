@@ -42,7 +42,7 @@ class Migration0002 extends AbstractMigration{
 	 */
 	protected function createDirtyWordTable(){
 		$this->createBaseTable('dirtyword')
-			->addColumn('wordTranslation_id', 'integer', ['signed' => true])
+			->addColumn('wordTranslation_id', 'integer', ['signed' => false])
 			->addForeignKey('wordTranslation_id', 'translation', 'id', [
 				'delete' => 'CASCADE'
 			])

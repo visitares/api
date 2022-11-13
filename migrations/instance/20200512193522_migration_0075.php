@@ -12,7 +12,7 @@ class Migration0075 extends AbstractMigration{
         'null' => false,
       ])
       ->addColumn('webinstructor_id', 'integer', [
-        'signed' => true,
+        'signed' => false,
         'default' => null,
         'null' => true,
       ])

@@ -15,8 +15,8 @@ class Migration0014 extends AbstractMigration{
 		 * comment table
 		 */
 		$this->createBaseTable('comment')
-			->addColumn('post_id', 'integer', [ 'signed' => true, 'null' => false ])
-			->addColumn('user_id', 'integer', [ 'signed' => true, 'null' => false ])
+			->addColumn('post_id', 'integer', [ 'signed' => false, 'null' => false ])
+			->addColumn('user_id', 'integer', [ 'signed' => false, 'null' => false ])
 			->addColumn('content', 'text', [ 'null' => false ])
 			->addForeignKey('post_id', 'post', 'id', [ 'delete' => 'CASCADE' ])
 			->addForeignKey('user_id', 'usercache', 'id', [ 'delete' => 'CASCADE' ])

@@ -8,7 +8,7 @@ class Migration0076 extends AbstractMigration{
     $this
       ->table('usersubmitinstance')
       ->addColumn('instructedForm_id', 'integer', [
-        'signed' => true,
+        'signed' => false,
         'default' => null,
         'null' => true,
       ])

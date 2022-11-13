@@ -32,54 +32,54 @@ class Migration0066 extends AbstractMigration{
   public function change(){
 
     $this->createBaseTable('catalog')
-      ->addColumn('nameTranslation_id', 'integer', ['signed' => true])
+      ->addColumn('nameTranslation_id', 'integer', ['signed' => false])
         ->addForeignKey('nameTranslation_id', 'translation', 'id', [
           'delete' => 'RESTRICT'
         ])
       ->save();
 
     $this->createBaseTable('catalog_attribute')
-      ->addColumn('catalog_id', 'integer', ['signed' => true])
+      ->addColumn('catalog_id', 'integer', ['signed' => false])
         ->addForeignKey('catalog_id', 'catalog', 'id', [
           'delete' => 'CASCADE'
         ])
       ->addColumn('position', 'integer', ['null' => false, 'default' => 0])
       ->addColumn('type', 'integer', ['null' => false, 'default' => 0])
-      ->addColumn('nameTranslation_id', 'integer', ['signed' => true])
+      ->addColumn('nameTranslation_id', 'integer', ['signed' => false])
         ->addForeignKey('nameTranslation_id', 'translation', 'id', [
           'delete' => 'RESTRICT'
         ])
       ->save();
 
     $this->createBaseTable('catalog_entry')
-      ->addColumn('catalog_id', 'integer', ['signed' => true])
+      ->addColumn('catalog_id', 'integer', ['signed' => false])
         ->addForeignKey('catalog_id', 'catalog', 'id', [
           'delete' => 'CASCADE'
         ])
-      ->addColumn('nameTranslation_id', 'integer', ['signed' => true])
+      ->addColumn('nameTranslation_id', 'integer', ['signed' => false])
         ->addForeignKey('nameTranslation_id', 'translation', 'id', [
           'delete' => 'RESTRICT'
         ])
       ->save();
 
     $this->createBaseTable('catalog_entry_attribute')
-      ->addColumn('entry_id', 'integer', ['signed' => true])
+      ->addColumn('entry_id', 'integer', ['signed' => false])
         ->addForeignKey('entry_id', 'catalog_entry', 'id', [
           'delete' => 'CASCADE'
         ])
-      ->addColumn('attribute_id', 'integer', ['signed' => true])
+      ->addColumn('attribute_id', 'integer', ['signed' => false])
         ->addForeignKey('attribute_id', 'catalog_attribute', 'id', [
           'delete' => 'CASCADE'
         ])
       ->addColumn('isActive', 'boolean', ['null' => false, 'default' => true])
-      ->addColumn('valueTranslation_id', 'integer', ['signed' => true])
+      ->addColumn('valueTranslation_id', 'integer', ['signed' => false])
         ->addForeignKey('valueTranslation_id', 'translation', 'id', [
           'delete' => 'RESTRICT'
         ])
       ->save();
     
     $this->table('form')
-      ->addColumn('catalog_id', 'integer', ['null' => true, 'after' => 'category_id', 'signed' => true])
+      ->addColumn('catalog_id', 'integer', ['null' => true, 'after' => 'category_id', 'signed' => false])
         ->addForeignKey('catalog_id', 'catalog', 'id', [
           'delete' => 'SET_NULL',
         ])

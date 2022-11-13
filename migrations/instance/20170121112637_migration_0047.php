@@ -12,7 +12,7 @@ class Migration0047 extends AbstractMigration{
 	public function up(){
 		$this->table('media')
 			->addColumn('master_id', 'integer', [
-				'signed' => true,
+				'signed' => false,
 				'null' => true,
 				'after' => 'modificationDate'
 			])

@@ -12,7 +12,7 @@ class Migration0044 extends AbstractMigration{
 	public function up(){
 		$this->table('media')
 			->addColumn('language_id', 'integer', [
-				'signed' => true,
+				'signed' => false,
 				'null' => true,
 				'after' => 'group_id'
 			])
@@ -36,11 +36,11 @@ class Migration0044 extends AbstractMigration{
 				'null' => true
 			])
 			->addColumn('category_id', 'integer', [
-				'signed' => true,
+				'signed' => false,
 				'null' => false
 			])
 			->addColumn('user_id', 'integer', [
-				'signed' => true,
+				'signed' => false,
 				'null' => false
 			])
 

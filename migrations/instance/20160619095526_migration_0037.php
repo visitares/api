@@ -15,7 +15,7 @@ class Migration0037 extends AbstractMigration{
 				'default' => true
 			])
 			->addColumn('icon_id', 'integer', [
-				'signed' => true,
+				'signed' => false,
 				'null' => true
 			])
 			->save();
