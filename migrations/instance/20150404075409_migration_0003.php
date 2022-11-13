@@ -16,7 +16,7 @@ class Migration0003 extends AbstractMigration{
 
 		$this->table('message')
 			->addColumn('submit_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'after' => 'user_id',
 				'null' => true
 			])

@@ -32,7 +32,7 @@ class Migration0001 extends AbstractMigration{
 		// Update `value` table
 		$this->table('value')
 			->changeColumn('option_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => true
 			])
 			->removeColumn('message')

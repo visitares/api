@@ -117,8 +117,8 @@ class Migration extends AbstractMigration{
 	protected function createTranslatedTable(){
 		$this->createBaseTable('translated')
 			// Data
-			->addColumn('language_id', 'integer', ['signed' => false])
-			->addColumn('translation_id', 'integer', ['signed' => false])
+			->addColumn('language_id', 'integer', ['signed' => true])
+			->addColumn('translation_id', 'integer', ['signed' => true])
 			->addColumn('content', 'text')
 
 			// Foreign Keys
@@ -157,14 +157,14 @@ class Migration extends AbstractMigration{
 	protected function createCategoryTable(){
 		$this->createBaseTable('category')
 			// Data
-			->addColumn('client_id', 'integer', ['signed' => false])
+			->addColumn('client_id', 'integer', ['signed' => true])
 			->addColumn('isActive', 'boolean')
 			->addColumn('isCopy', 'boolean')
 			->addColumn('icon', 'string', [
 				'limit' => 250
 			])
-			->addColumn('nameTranslation_id', 'integer', ['signed' => false])
-			->addColumn('descriptionTranslation_id', 'integer', ['signed' => false])
+			->addColumn('nameTranslation_id', 'integer', ['signed' => true])
+			->addColumn('descriptionTranslation_id', 'integer', ['signed' => true])
 
 			// Foreign Keys
 			->addForeignKey('client_id', 'client', 'id', [
@@ -187,8 +187,8 @@ class Migration extends AbstractMigration{
 	protected function createGroupTable(){
 		$this->createBaseTable('usergroup')
 			// Data
-			->addColumn('nameTranslation_id', 'integer', ['signed' => false])
-			->addColumn('descriptionTranslation_id', 'integer', ['signed' => false])
+			->addColumn('nameTranslation_id', 'integer', ['signed' => true])
+			->addColumn('descriptionTranslation_id', 'integer', ['signed' => true])
 
 			// Foreign Keys
 			->addForeignKey('nameTranslation_id', 'translation', 'id', [
@@ -210,8 +210,8 @@ class Migration extends AbstractMigration{
 			'id' => false,
 			'primary_key' => ['category_id', 'group_id']
 		])
-			->addColumn('category_id', 'integer', ['null' => false, 'signed' => false])
-			->addColumn('group_id', 'integer', ['null' => false, 'signed' => false])
+			->addColumn('category_id', 'integer', ['null' => false, 'signed' => true])
+			->addColumn('group_id', 'integer', ['null' => false, 'signed' => true])
 			->addForeignKey('category_id', 'category', 'id', [
 				'delete' => 'CASCADE'
 			])
@@ -241,7 +241,7 @@ class Migration extends AbstractMigration{
 			])
 
 			// Data
-			->addColumn('language_id', 'integer', ['signed' => false])
+			->addColumn('language_id', 'integer', ['signed' => true])
 			->addColumn('isActive', 'boolean')
 			->addColumn('role', 'integer')
 			->addColumn('username', 'string', [
@@ -280,8 +280,8 @@ class Migration extends AbstractMigration{
 			'id' => false,
 			'primary_key' => ['group_id', 'user_id']
 		])
-			->addColumn('group_id', 'integer', ['null' => false, 'signed' => false])
-			->addColumn('user_id', 'integer', ['null' => false, 'signed' => false])
+			->addColumn('group_id', 'integer', ['null' => false, 'signed' => true])
+			->addColumn('user_id', 'integer', ['null' => false, 'signed' => true])
 			->addForeignKey('group_id', 'usergroup', 'id', [
 				'delete' => 'CASCADE'
 			])
@@ -305,12 +305,12 @@ class Migration extends AbstractMigration{
 	protected function createFormTable(){
 		$this->createBaseTable('form')
 			// Data
-			->addColumn('category_id', 'integer', ['signed' => false])
+			->addColumn('category_id', 'integer', ['signed' => true])
 			->addColumn('type', 'integer')
-			->addColumn('nameTranslation_id', 'integer', ['signed' => false])
-			->addColumn('descriptionTranslation_id', 'integer', ['signed' => false])
-			->addColumn('labelColumnTranslation_id', 'integer', ['signed' => false])
-			->addColumn('optionColumnTranslation_id', 'integer', ['signed' => false])
+			->addColumn('nameTranslation_id', 'integer', ['signed' => true])
+			->addColumn('descriptionTranslation_id', 'integer', ['signed' => true])
+			->addColumn('labelColumnTranslation_id', 'integer', ['signed' => true])
+			->addColumn('optionColumnTranslation_id', 'integer', ['signed' => true])
 
 			// Foreign Keys
 			->addForeignKey('category_id', 'category', 'id', [
@@ -339,8 +339,8 @@ class Migration extends AbstractMigration{
 	protected function createInputTable(){
 		$this->createBaseTable('input')
 			// Data
-			->addColumn('form_id', 'integer', ['signed' => false])
-			->addColumn('labelTranslation_id', 'integer', ['signed' => false])
+			->addColumn('form_id', 'integer', ['signed' => true])
+			->addColumn('labelTranslation_id', 'integer', ['signed' => true])
 
 			// Foreign Keys
 			->addForeignKey('form_id', 'form', 'id', [
@@ -360,8 +360,8 @@ class Migration extends AbstractMigration{
 	protected function createOptionTable(){
 		$this->createBaseTable('inputoption')
 			// Data
-			->addColumn('input_id', 'integer', ['signed' => false])
-			->addColumn('labelTranslation_id', 'integer', ['signed' => false])
+			->addColumn('input_id', 'integer', ['signed' => true])
+			->addColumn('labelTranslation_id', 'integer', ['signed' => true])
 
 			// Foreign Keys
 			->addForeignKey('input_id', 'input', 'id', [
@@ -381,12 +381,12 @@ class Migration extends AbstractMigration{
 	protected function createSubmitTable(){
 		$this->createBaseTable('submit')
 			// Data
-			->addColumn('form_id', 'integer', ['signed' => false])
+			->addColumn('form_id', 'integer', ['signed' => true])
 			->addColumn('user_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => true
 			])
-			->addColumn('language_id', 'integer', ['signed' => false])
+			->addColumn('language_id', 'integer', ['signed' => true])
 
 			// Foreign Keys
 			->addForeignKey('form_id', 'form', 'id', [
@@ -409,9 +409,9 @@ class Migration extends AbstractMigration{
 	protected function createValueTable(){
 		$this->createBaseTable('value')
 			// Data
-			->addColumn('submit_id', 'integer', ['signed' => false])
-			->addColumn('input_id', 'integer', ['signed' => false])
-			->addColumn('option_id', 'integer', ['signed' => false])
+			->addColumn('submit_id', 'integer', ['signed' => true])
+			->addColumn('input_id', 'integer', ['signed' => true])
+			->addColumn('option_id', 'integer', ['signed' => true])
 			->addColumn('checked', 'boolean', [
 				'null' => true
 			])
@@ -441,7 +441,7 @@ class Migration extends AbstractMigration{
 		$this->createBaseTable('message')
 			// Data
 			->addColumn('user_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => true
 			])
 			->addColumn('message', 'text')
@@ -461,8 +461,8 @@ class Migration extends AbstractMigration{
 	protected function createUnreadTable(){
 		$this->createBaseTable('unread')
 			// Data
-			->addColumn('user_id', 'integer', ['signed' => false])
-			->addColumn('message_id', 'integer', ['signed' => false])
+			->addColumn('user_id', 'integer', ['signed' => true])
+			->addColumn('message_id', 'integer', ['signed' => true])
 
 			// Foreign Keys
 			->addForeignKey('user_id', 'user', 'id')

@@ -13,7 +13,7 @@ class Migration0013 extends AbstractMigration{
 
 		$this->table('instance')
 			->addColumn('master_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => true,
 				'after' => 'modificationDate'
 			])

@@ -15,7 +15,7 @@ class Migration0009 extends AbstractMigration{
 		 */
 		$this->table('attachment')
 			// Data
-			->addColumn('message_id', 'integer', ['signed' => false])
+			->addColumn('message_id', 'integer', ['signed' => true])
 			->addColumn('creationDate', 'datetime', [
 				'null' => true
 			])

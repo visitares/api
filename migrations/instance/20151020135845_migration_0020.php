@@ -20,8 +20,8 @@ class Migration0020 extends AbstractMigration{
 			])
 
 			// Data
-			->addColumn('user_id', 'integer', ['signed' => false])
-			->addColumn('form_id', 'integer', ['signed' => false])
+			->addColumn('user_id', 'integer', ['signed' => true])
+			->addColumn('form_id', 'integer', ['signed' => true])
 			->addColumn('role', 'integer')
 
 			// Foreign keys

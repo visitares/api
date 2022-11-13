@@ -33,7 +33,7 @@ class Migration0039 extends AbstractMigration{
 
 		$this->table('user')
 			->addColumn('configGroup_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => true,
 				'after' => 'language_id'
 			])

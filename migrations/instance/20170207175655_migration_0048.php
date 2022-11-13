@@ -12,7 +12,7 @@ class Migration0048 extends AbstractMigration{
 	public function up(){
 		$this->table('user')
 			->addColumn('metagroup_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => true,
 				'after' => 'modificationDate'
 			])

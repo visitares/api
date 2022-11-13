@@ -24,8 +24,8 @@ class Migration0019 extends AbstractMigration{
 				'metaGroup_id'
 			]
 		])
-			->addColumn('user_id', 'integer', [ 'signed' => false, 'null' => false])
-			->addColumn('metaGroup_id', 'integer', [ 'signed' => false, 'null' => false])
+			->addColumn('user_id', 'integer', [ 'signed' => true, 'null' => false])
+			->addColumn('metaGroup_id', 'integer', [ 'signed' => true, 'null' => false])
 			->addForeignKey('user_id', 'usercache', 'id', [
 				'delete' => 'CASCADE'
 			])
@@ -41,8 +41,8 @@ class Migration0019 extends AbstractMigration{
 				'metaGroup_id'
 			]
 		])
-			->addColumn('post_id', 'integer', [ 'signed' => false, 'null' => false ])
-			->addColumn('metaGroup_id', 'integer', [ 'signed' => false, 'null' => false ])
+			->addColumn('post_id', 'integer', [ 'signed' => true, 'null' => false ])
+			->addColumn('metaGroup_id', 'integer', [ 'signed' => true, 'null' => false ])
 			->addForeignKey('post_id', 'post', 'id', [ 'delete' => 'CASCADE' ])
 			->addForeignKey('metaGroup_id', 'metagroup', 'id', [ 'delete' => 'CASCADE' ])
 			->save();

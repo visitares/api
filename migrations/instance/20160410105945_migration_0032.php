@@ -18,7 +18,7 @@ class Migration0032 extends AbstractMigration{
 				'null' => true
 			])
 			->addColumn('category_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => false
 			])
 			->addColumn('isArchived', 'boolean', [
@@ -42,7 +42,7 @@ class Migration0032 extends AbstractMigration{
 
 		$this->table('submit')
 			->addColumn('categoryprocess_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => true
 			])
 			->addForeignKey('categoryprocess_id', 'categoryprocess', 'id', [

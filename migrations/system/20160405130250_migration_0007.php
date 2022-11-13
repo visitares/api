@@ -36,7 +36,7 @@ class Migration0007 extends AbstractMigration{
 				'null' => true
 			])
 			->addColumn('group_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => false
 			])
 			->addColumn('filename', 'string', [
@@ -53,7 +53,7 @@ class Migration0007 extends AbstractMigration{
 				'null' => true
 			])
 			->addColumn('background_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => true,
 				'after' => 'background'
 			])

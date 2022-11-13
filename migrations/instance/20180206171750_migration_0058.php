@@ -31,8 +31,8 @@ class Migration0058 extends AbstractMigration{
 	public function up(){
 
 		$this->table('client')
-			->addColumn('nameTranslation_id', 'integer', ['null' => true, 'signed' => false])
-			->addColumn('descriptionTranslation_id', 'integer', ['null' => true, 'signed' => false])
+			->addColumn('nameTranslation_id', 'integer', ['null' => true, 'signed' => true])
+			->addColumn('descriptionTranslation_id', 'integer', ['null' => true, 'signed' => true])
 			->addForeignKey('nameTranslation_id', 'translation', 'id', [
 				'delete' => 'RESTRICT'
 			])

@@ -42,11 +42,11 @@ class Migration0040 extends AbstractMigration{
 			'primary_key' => ['form_id', 'media_id']
 		])
 			->addColumn('form_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => false
 			])
 			->addColumn('media_id', 'integer', [
-				'signed' => false,
+				'signed' => true,
 				'null' => false
 			])
 			->addColumn('sort', 'integer', [
